@@ -1,0 +1,33 @@
+services:
+  pgadmin:
+    image: elestio/pgadmin:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: streamhub@uex.es
+      PGADMIN_DEFAULT_PASSWORD: root      
+      PGADMIN_CONFIG_WTF_CSRF_HEADERS: '["Referer", "Origin"]'
+      PGADMIN_CONFIG_WTF_CSRF_ENABLED: 'False'
+      PGADMIN_LISTEN_PORT: 8080
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    restart: always          
+    environment: 
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: streamhub
+    volumes:                 
+      - pg-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  pgadmin-data:
+  pg-data:
+    
