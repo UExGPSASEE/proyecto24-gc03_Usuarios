@@ -1,0 +1,42 @@
+
+{
+	"name": "Ubuntu",
+	"image": "mcr.microsoft.com/devcontainers/base:jammy",
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/joshuanianji/devcontainer-features/github-cli-persistence:1": {},
+		"ghcr.io/itsmechlark/features/postgresql:1": {},
+		"ghcr.io/devcontainers-extra/features/maven-sdkman:2": {},
+		"ghcr.io/devcontainers-extra/features/springboot-sdkman:2": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		8080
+	],
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"atlassian.atlascode",
+				"GitHub.copilot",
+				"GitHub.codespaces",
+				"GitHub.copilot-chat",
+				"GitHub.remotehub",
+				"PKief.material-icon-theme",
+				"vscjava.vscode-java-pack",
+				"eamodio.gitlens",
+				"vscjava.vscode-maven",
+				"vscjava.vscode-java-dependency",
+				"redhat.vscode-yaml",
+				"ms-ossdata.vscode-postgresql"
+			]
+		}
+	},
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": {
+		"uname -a": "Print out the kernel version"
+	}
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
